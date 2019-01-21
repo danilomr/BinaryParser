@@ -1,5 +1,7 @@
 package visualinterface;
 
+import file.FileManager;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,6 +14,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import lexic.Token;
+import lexic.Tokenizer;
 
 /**
  * Panel used to add elements to the visual interface. 
@@ -148,6 +153,16 @@ public class FilePanel extends JPanel implements ActionListener {
      * Method used to parse binary file and display the results on the screen.
      */
     private void parseOnScreen() {
+    	String input = FileManager.getInput(textURL.getText());
+        try {
+        	Tokenizer tokenizer = new Tokenizer();
+            tokenizer.tokenize(input.getBytes());
+            for(Token token : tokenizer.getTokens()) {
+            	System.out.println(token.token + " - " + token.sequence);
+            }
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
     }
 
 }
