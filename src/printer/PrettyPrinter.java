@@ -8,6 +8,8 @@ import abstracttree.NodeVisitor;
 import abstracttree.NumberNode;
 import abstracttree.StringNode;
 
+import file.FileManager;
+
 /**
  * Class used to visit the abstract tree and print the parsed JSON.
  * @author danilo.melo.rocha
@@ -41,6 +43,10 @@ public class PrettyPrinter implements NodeVisitor {
 
     public void print() {
         System.out.println(this.textGenerated.toString());
+    }
+    
+    public void createFile(String folderLocation, String filename) {
+        FileManager.createFile(this.textGenerated, folderLocation + filename);
     }
 
     private void ident() {

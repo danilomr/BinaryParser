@@ -97,7 +97,6 @@ public class FilePanel extends JPanel implements ActionListener {
         Object source = evt.getSource();
         if (source == this.buttonFile) {
             JFileChooser fileChooser = new JFileChooser();
-            //JFileChooser fileChooser = new JFileChooser("C:\\Users\\danilo.melo.rocha\\Desktop\\project clx\\json_binary_parser\\");
             int returnValue = fileChooser.showOpenDialog(this);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 String fileName = fileChooser.getSelectedFile().getAbsolutePath();
@@ -147,6 +146,18 @@ public class FilePanel extends JPanel implements ActionListener {
      * Method used to parse binary file and generate a human readable file.
      */
     private void parseToFile() {
+    	String file = textURL.getText();
+        String outputPath = textFolder.getText();
+        String fileName = file.substring(file.lastIndexOf(File.separatorChar) + 1);
+        String input = FileManager.getInput(file);
+
+        try {
+            Parser parser = new Parser(input);
+            PrettyPrinter printer = new PrettyPrinter(parser.getNodeTree());
+            printer.createFile(outputPath, fileName + "new");
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
     }
 
     /**
