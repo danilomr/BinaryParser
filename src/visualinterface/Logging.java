@@ -110,7 +110,7 @@ ActionListener, Runnable {
         c2.gridy = 0;       //third row
 
         textArea = new JTextArea();
-        textArea.setRows(20);
+        textArea.setRows(25);
         textArea.setColumns(62);
         textArea.setEditable(false);
         add(new JScrollPane(textArea), c2);
