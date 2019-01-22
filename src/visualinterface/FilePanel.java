@@ -15,8 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import lexic.Token;
-import lexic.Tokenizer;
+import syntactic.Parser;
 
 /**
  * Panel used to add elements to the visual interface. 
@@ -155,11 +154,7 @@ public class FilePanel extends JPanel implements ActionListener {
     private void parseOnScreen() {
     	String input = FileManager.getInput(textURL.getText());
         try {
-        	Tokenizer tokenizer = new Tokenizer();
-            tokenizer.tokenize(input.getBytes());
-            for(Token token : tokenizer.getTokens()) {
-            	System.out.println(token.token + " - " + token.sequence);
-            }
+        	Parser parser = new Parser(input);
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
