@@ -24,4 +24,18 @@ public class ListNode implements Node {
         return this.value;
     }
 
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visitEnter(this);
+        LinkedList<Node> children = this.value;
+        for (int i = 0; i < children.size(); i++) {
+            visitor.visitIdent(this);
+            children.get(i).accept(visitor);
+            if (i+1 < children.size()) {
+                visitor.visit(this);
+            }
+        }
+        visitor.visitLeave(this);
+    }
+
 }

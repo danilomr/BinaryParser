@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import printer.PrettyPrinter;
 import syntactic.Parser;
 
 /**
@@ -154,7 +155,9 @@ public class FilePanel extends JPanel implements ActionListener {
     private void parseOnScreen() {
     	String input = FileManager.getInput(textURL.getText());
         try {
-        	Parser parser = new Parser(input);
+            Parser parser = new Parser(input);
+            PrettyPrinter printer = new PrettyPrinter(parser.getNodeTree());
+            printer.print();
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }

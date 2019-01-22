@@ -80,25 +80,25 @@ public class Parser {
                 case Token.NUMBER:
                     node = number();
                     if (this.lookahead.token == Token.EPSILON) {
-                        System.out.println("Successfully parsed an int.");
+                        //System.out.println("Successfully parsed an int.");
                     }
                     break;
                 case Token.STRING:
                     node = string();
                     if (this.lookahead.token == Token.EPSILON) {
-                        System.out.println("Successfully parsed a string.");
+                        //System.out.println("Successfully parsed a string.");
                     }
                     break;
                 case Token.LIST:
                     node = arrayValue();
                     if (this.lookahead.token == Token.EPSILON) {
-                        System.out.println("Successfully parsed an array.");
+                        //System.out.println("Successfully parsed an array.");
                     }
                     break;
                 case Token.DICTIONARY:
                     node = dictionary();
                     if (this.lookahead.token == Token.EPSILON) {
-                        System.out.println("Successfully parsed a JSON Dictionary.");
+                        //System.out.println("Successfully parsed a JSON Dictionary.");
                     }
                     break;
                 default:

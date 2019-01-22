@@ -20,4 +20,11 @@ public class KeyValueNode implements Node {
         return this.value;
     }
 
+    @Override
+    public void accept(NodeVisitor visitor) {
+        this.key.accept(visitor);
+        visitor.visit(this);
+        this.value.accept(visitor);
+    }
+
 }

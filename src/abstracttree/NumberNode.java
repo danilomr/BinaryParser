@@ -21,4 +21,9 @@ public class NumberNode implements Node {
         return this.value;
     }
 
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
+
 }
